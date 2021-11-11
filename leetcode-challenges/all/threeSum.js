@@ -16,7 +16,13 @@ function threeSum(nums) {
         if ( nums[j] < 0 && ( nums[k] < 0  ) )
           continue;
         if ((i !== j && j !== k && i !== k) && (nums[j]) === -(nums[i] + nums[k])) {
-          
+          kPos = k;
+          if (res.find(a => a[0] === nums[i] && a[1] === nums[j] && a[2] === nums[k])) {
+            break;
+          } else {
+            res.push([nums[i], nums[j], nums[k]]);
+            break;
+          }
           
         }
       }
