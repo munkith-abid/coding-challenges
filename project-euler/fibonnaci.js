@@ -7,7 +7,8 @@ function evenFibSum(n){
     let fibTerm = fibonacci(n - 1, memo) + fibonacci(n - 2, memo);
 //         console.log(fibTerm);
     if(fibTerm % 2 === 0)
-        sum += fibTerm; 
+        sum += fibTerm;
+    return memo[n] = fibTerm;   
 }
 }
 
