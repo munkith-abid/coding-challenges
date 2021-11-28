@@ -26,7 +26,9 @@ var wordBreak = function(s, wordDict) {
                         return true;
                     if(found) {
                         res = res.replaceAll(pattern2, '');
-                                           
+                        if(res === '') 
+                            return true;  
+                        break;                    
                     }
                 
                 }
