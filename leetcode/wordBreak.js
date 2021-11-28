@@ -44,3 +44,24 @@ var wordBreak = function(s, wordDict) {
     return found;
     
 };
+
+const s1 = "applepenapple";  //true
+const w1 = ["apple","pen"]
+
+const s2 = "catsandog"; //false
+const w2 = ["cats","dog","sand","and","cat"]
+
+const s3 = "ddadddbdddadd"; //true
+const w3 = ["dd","ad","da","b"];
+
+const s4 = "bb";  //true
+const w4 = ["a","b","bbb","bbbb"];
+
+const s5 = "aaaaaaa";  //false
+const w5 = ["aaaa","aa"];
+
+const s6 = "paviraagi"; //true
+const w6 = ["pavira","pavi","raa","gi","ag","ii"];
+
+const s7 = "bccdbacdbdacddabbaaaadababadad"
+const w7 = ["cbc","bcda","adb","ddca","bad","bbb","dad","dac","ba","aa","bd","abab","bb","dbda","cb","caccc","d","dd","aadb","cc","b","bcc","bcd","cd","cbca","bbd","ddd","dabb","ab","acd","a","bbcc","cdcbd","cada","dbca","ac","abacd","cba","cdb","dbac","aada","cdcda","cdc","dbc","dbcb","bdb","ddbdd","cadaa","ddbc","babb"]
