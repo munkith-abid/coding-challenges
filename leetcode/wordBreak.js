@@ -19,8 +19,12 @@ var wordBreak = function(s, wordDict) {
               for(let k = 0; k < wordDict.length; k++){
                   let sw = wordDict[k];
   //                 let pattern = new RegExp(`(?<=${cw}|${fw}|${sw}|^)${cw}(?=${cw}|${fw}|${sw}|$)`)
+                  let pattern2 = new RegExp(`(?<=${cw}|${fw}|${sw}|^)${cw}(?=${cw}|${fw}|${sw}|$)`, 'g')
                   
-                  }
+                  found = !!res.match(pattern2);
+                  if(res === '') 
+                      return true;
+                  
               
               }
 //                 if(found) break;
