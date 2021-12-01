@@ -56,7 +56,7 @@ const w3 = ["dd","ad","da","b"];
 
 const s4 = "bb";  //true
 const w4 = ["a","b","bbb","bbbb"];
- 
+// 1/
 const s5 = "aaaaaaa";  //false
 const w5 = ["aaaa","aa"];
 
