@@ -6,7 +6,9 @@ const findXInThree = (s) => {
       xCount++;
     }
   }
-  
+  if(s[i] === 'X' || s[i - 1] === 'X' || s[i - 2] === 'X'){
+    xCount++;
+  }
   return xCount;
 }
 
