@@ -4,7 +4,7 @@ function numsToDigits(str) {
   const numeralsSpecials = [['0', 'z'], ['1', 'o', 'z', 'w', 'u'], ['2', 'w'], ['3', 'h', 'g'], ['4', 'u'],
   ['5', 'f', 'u'], ['6', 'x'], ['7', 's', 'x'], ['8', 'g'], ['9', 'i', 'x', 'g']];
   let res = '';
-  findCount = (uniqChar) => strArr.filter(char => char === uniqChar).length;
+  const findCount = (char) => strArr.filter(ch => char === ch).length;
 
   function numsToDigits(digit, uniq, ...shared) {
     let totalShared = 0;
@@ -15,6 +15,7 @@ function numsToDigits(str) {
     let actualUniqCount = initialUniqCount - totalShared;
     return digit.repeat(actualUniqCount);
   }
+  
   for (let i = 0; i < numeralsSpecials.length; i++) {
     res += numsToDigits(...numeralsSpecials[i]);
   }
