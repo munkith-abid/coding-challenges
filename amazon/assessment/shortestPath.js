@@ -1,38 +1,38 @@
 function shortestPath(grid) {
   const visited = {};
   const paths = [];
-  let moves = 1;
-  const validSteps = [[0, 0]];
-  const getValidSteps = (x, y) => {
+  // let moves = 1;
+  const validSteps = [[0, 0, 0]];
+  const getValidSteps = (x, y, moves) => {
     let found = false;
     if(x > 0 && grid[y]?.[x - 1] === 9)
       return ++moves;
     else if(x > 0 && grid[y]?.[x - 1] === 1){
-      validSteps.push([x - 1, y]);
+      validSteps.push([x - 1, y, moves + 1]);
       found = true;
     }
 
     if(x < grid[0].length && grid[y]?.[x + 1] === 9)
       return ++moves;
     else if(x < grid[0].length && grid[y]?.[x + 1] === 1){
-      validSteps.push([x + 1, y]);
+      validSteps.push([x + 1, y, moves + 1]);
       found = true
     }
 
     if(y > 0 && grid[y - 1]?.[x] === 9)
       return ++moves;
     else if(y > 0 && grid[y - 1]?.[x] === 1){
-      validSteps.push([x, y - 1]);
+      validSteps.push([x, y - 1, moves + 1]);
       found = true
     }
 
     if(y < grid.length - 1 && grid[y + 1]?.[x] === 9)
       return ++moves;
     else if(y < grid.length - 1 && grid[y + 1]?.[x] === 1){
-      validSteps.push([x, y + 1]);
+      validSteps.push([x, y + 1, moves + 1]);
       found = true
     }
-    if(found) moves++
+    // if(found) moves++
     grid[y][x] = "*";
     return null;
 
@@ -51,6 +51,7 @@ function shortestPath(grid) {
       if(m)
         return m;
     }
+
     // if (grid[y][x] === 1) {
     //   grid[y][x] = 0;
     //   ++moves;
@@ -74,12 +75,14 @@ function shortestPath(grid) {
     // }
     // }
 
-    return moves;
+    return -1;
   }
   console.log(validSteps);
   return steps(0, 0)
 }
-const g1 = [[1, 1, 1],
-            [1, 0, 1],
-            [1, 9, 1],]
+const g1 = [[1, 1, 1, 0],
+            [1, 0, 1, 0],
+            [1, 0, 1, 0],
+            [9, 0, 1, 9]
+            ,]
 console.log(shortestPath(g1))
