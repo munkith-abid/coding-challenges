@@ -1,7 +1,8 @@
 const findClosest = (arr, startIndex, num) => {
   let rightSearch = leftSearch = startIndex;
+  let totalSize = arr.length;
   let rightSteps = leftSteps = 0;
-  while(true){
+  while(--totalSize !== -1){
     if(rightSearch === arr.length ){
       rightSearch = 0;
     }
@@ -18,6 +19,7 @@ const findClosest = (arr, startIndex, num) => {
     rightSearch++;
     leftSearch--;
   }
+  return -1;
 }
 
 const arr = [ 2, 5, 6, 3, 7, 6, 1, 8, 9];
