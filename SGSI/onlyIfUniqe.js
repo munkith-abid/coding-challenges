@@ -1,6 +1,5 @@
 function onlyIfUnique(arr){
   const counts = {};
-  let founMoreThanOne;
   for(element of arr){
     counts[element] ? counts[element]++ : counts[element] = 1;
   }
