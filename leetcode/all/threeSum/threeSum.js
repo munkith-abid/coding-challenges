@@ -1,11 +1,11 @@
 function threeSum(nums) {
 
-  nums.sort( (a, b) => a - b);
+  nums.sort((a, b) => a - b);
   function binFindIndex(arr, elem, l = 0, r = arr.length) {
     let leftBound = l;
     let rightBound = r;
     while (rightBound >= leftBound) {
-      let mid = parseInt((rightBound - leftBound) / 2) + leftBound;
+      let mid = Math.floor((rightBound - leftBound) / 2) + leftBound;
       if (arr[mid] === elem) return mid;
       if (arr[mid] < elem) {
         leftBound = mid + 1;
@@ -20,35 +20,38 @@ function threeSum(nums) {
   const res = [];
   let i, j;
   for (i = 0; nums[i] < 0; i++) {
-    if(nums[i] !== nums[i + 1])
-    for (j = nums.length - 1; nums[j] > 0 && j > i; j--) {
-      let neg = nums[i];
-      let pos = nums[j];
-      let sum = neg + pos;
-      if(nums[j] !== nums[j - 1])
-       if (sum > 0) {
-        if (-sum <= neg)
-          if (binFindIndex(nums, -sum, 0, i - 1) !== -1) {
-            res.push([neg, -sum, pos])
+    if (nums[i] !== nums[i + 1])
+      for (j = nums.length - 1; nums[j] > 0 && j > i; j--) {
+        let neg = nums[i];
+        let pos = nums[j];
+        let sum = neg + pos;
+        if (nums[j] !== nums[j - 1])
+          if (sum > 0) {
+            if (-sum <= neg)
+              if (binFindIndex(nums, -sum, 0, i - 1) !== -1) {
+                res.push([neg, -sum, pos]);
+                continue;
+              }
+              else if (-sum >= neg)
+                if (binFindIndex(nums, -sum, i + 1, j - 1) !== -1) {
+                  res.push([neg, -sum, pos]);
+                  continue;
+                }
+          } else {
+            if (-sum <= pos)
+              if (binFindIndex(nums, -sum, i + 1, j - 1) !== -1) {
+                res.push([neg, -sum, pos]);
+                continue;
+              }
+              else if (-sum >= pos)
+                if (binFindIndex(nums, -sum, j + 1, nums.length) !== -1) {
+                  res.push([neg, -sum, pos]);
+                  continue;
+                }
           }
-          else if (-sum >= neg)
-            if (binFindIndex(nums, -sum, i + 1) !== -1) {
-              res.push([neg, -sum, pos])
-            }
-      } else {
-        if (-sum <= pos)
-          if (binFindIndex(nums, -sum, null, j - 1) !== -1) {
-            res.push([neg, -sum, pos])
-          }
-          else if (-sum >= pos)
-            if (binFindIndex(nums, -sum, j + 1, nums.length) !== -1) {
-              res.push([neg, -sum, pos])
-            }
       }
-    }
   }
-  if(nums[i] === 0 && (nums[i + 1] + nums[i + 2]) === 0) 
-    {res.push([0, 0, 0]);}
+  if (nums[i] === 0 && (nums[i + 1] + nums[i + 2]) === 0) { res.push([0, 0, 0]); }
   return res
 }
 
@@ -3058,7 +3061,9 @@ const nums4 = [
   77916
 ]
 
+
+
 // threeSum(nums);
 console.log(threeSum(nums2));
-console.log(threeSum(nums3));
+console.log(threeSum(nums4));
 // threeSum(nums2);
