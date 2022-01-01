@@ -27,14 +27,14 @@ function threeSum(nums) {
     for(let j = nums.length; j >= firstPositiveIndex; j--){
       let neg = nums[i];
       let pos = nums[j];
-      let sum = neg + pos;
+      let sum = -(neg + pos);
 
       // console.log(sum);
       // console.log(neg + pos + -sum);
       if(sum === 0 && hasZero){
         res.push([neg, pos, sum]);
       }else {
-        
+
         if(binFindIndex(nums, -sum) !== -1){
           res.push([neg, pos, -sum])
         }
