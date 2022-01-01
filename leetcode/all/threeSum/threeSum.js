@@ -1,75 +1,55 @@
 function threeSum(nums) {
   
   nums.sort();
-  // let i = nums.lastIndexOf(0);
+  let i = nums.lastIndexOf(0);
   // const firstPositiveIndex = i === -1 ? nums.findIndex(n => n > 0) : i;
   const firstPositiveIndex = nums.findIndex(n => n > 0);
-  let counter = 1
-  
-  let k;
-  let i = 0;
-  let prevk;
-  let res = [];
-  for(; i < firstPositiveIndex; i++){
-
-    for(let j = firstPositiveIndex; j < nums.length; j++){
-      if(nums[i] + nums[j] < 0){
-
-        for(k = prevk || nums.length - 1; k <= firstPositiveIndex; k--){
-
-          if(nums[k] === -(nums[i] + nums[j])){
-            prevk = k - 1;
-            res.push([nums[i], nums[j], numd[k]]);
-            break;
-          }
-        }
+  function binFindIndex(arr, elem, l = 0, r = arr.length){
+    let leftBound = l;
+    let rightBound = r;
+    while(rightBound >= leftBound){
+      let mid = parseInt((rightBound - leftBound) / 2) + leftBound;
+      if(arr[mid] === elem) return mid;
+      if(arr[mid] < elem){
+        leftBound = mid + 1;
       } else {
-        k = null;
-        for(k = prevk || 0; k < firstPositiveIndex; k++){
-          if(nums[k] === -(nums[i] + nums[j])){
-            prevk = k + 1;
-            res.push([nums[i], nums[j], numd[k]]);
-            break;
-          }
+        rightBound = mid - 1;
+      }
+      
+    }
+    return -1;
+
+  }
+  const res = [];
+  const hasZero = nums[firstPositiveIndex - 1] === 0;
+  console.log(nums);
+  for(let i = 0; i < firstPositiveIndex; i++){
+    for(let j = nums.length; j >= firstPositiveIndex; j--){
+      let neg = nums[i];
+      let pos = nums[j];
+      let sum = neg + pos;
+
+      // console.log(sum);
+      // console.log(neg + pos + -sum);
+      if(sum === 0 && hasZero){
+        res.push([neg, pos, sum]);
+      }else {
+        
+        if(binFindIndex(nums, -sum) !== -1){
+          res.push([neg, pos, -sum])
         }
       }
-
-
     }
   }
-
-
-
-
-  // for (let i = 0; nums[i] <= 0; i++) {
-  //   let kPos = nums.length - 1
-  //   for (let j = i + 1; j < nums.length; j++) {
-  //     k  = j + 1;
-  //     k = j > firstPositiveIndex ? j + 1 : firstPositiveIndex;
-  //     for(; k < nums.length; k++) {
-  //       counter++;
-  //       if ( nums[j] < 0 && ( nums[k] < 0  ) )
-  //         continue;
-  //       if ((i !== j && j !== k && i !== k) && (nums[j]) === -(nums[i] + nums[k])) {
-  //         kPos = k;
-  //         if (res.find(a => a[0] === nums[i] && a[1] === nums[j] && a[2] === nums[k])) {
-  //           break;
-  //         } else {
-  //           res.push([nums[i], nums[j], nums[k]]);
-  //           break;
-  //         }
-          
-  //       }
-  //     }
-    // }
-  // }
-  console.log(res);
-  return res;
+  // console.log(binFindIndex([0, 1, 2, 3, 4, 5, 6, 7, 8], 2))
+  return res
 }
 
 let nums1 = [1, 1, -2]
 let nums2 = [0, 0, 0]
+const nums3 = [-1,0,1,2,-1,-4]
 
 // threeSum(nums);
-threeSum(nums1);
-threeSum(nums2);
+console.log(threeSum(nums1));
+console.log(threeSum(nums3));
+// threeSum(nums2);
