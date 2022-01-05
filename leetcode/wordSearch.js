@@ -9,4 +9,4 @@ function getAdjacents(arr, {row, col, preRow, preCol}, prev) {
   // const before = arr[row]?.[col - 1];
   // const after = arr[row]?.[col + 1];
 
-  
+}
