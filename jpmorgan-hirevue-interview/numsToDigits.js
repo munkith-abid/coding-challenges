@@ -65,5 +65,5 @@ function numsToDigits(str) {
   return res;
 }
 
-const s1 = 'zoofuf';
+const s1 = 'vzoieofeurf';
 console.log(numsToDigits(s1));
